@@ -260,6 +260,8 @@ p{margin:0}
 .modes-d{margin:12px 0 0;font-size:.95rem;color:var(--muted);min-height:1.5em}
 .btn{font-family:var(--font-hand);font-weight:700;font-size:1.15rem;min-height:46px;padding:4px 20px;border:3px solid var(--ink);border-radius:var(--r2);background:var(--card);color:var(--ink);cursor:pointer;box-shadow:3px 3px 0 var(--shade)}
 .btn:active{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--shade)}
+/* 링크를 버튼처럼: 말모이 학부모 화면 열기 */
+.btnlink{display:inline-flex;align-items:center;justify-content:center;text-decoration:none}
 .small{font-size:.9rem;color:var(--muted)}
 
 body.calm *{animation:none!important;transition:none!important}
@@ -892,6 +894,7 @@ body:not(.did) #roomFab,body:not(.did) .hgo{display:none}
   function renderPlan(){
     var el = $('#planBody'); if (!el) return;
     var P = PLAN, h = '<p class="small">부모님이 ‘말모이 학부모’ 앱에서 정하거나, 여기서 바로 정할 수 있어요. 정하면 사진 속 낱말과 이어지는 낱말을 나이와 단계에 맞게 골라 줘요.</p>';
+    h += '<div class="prow"><a class="btn btnlink" href="parent.html">말모이 학부모 열기</a><span class="small">아이가 한 활동 기록을 부모님이 읽어 보는 화면이에요.</span></div>';
     h += segHTML('아이 나이', 'age', [4, 5, 6, 7, 8, 9].map(function(a){ return [a, a + '세']; }), P.set ? P.age : '');
     h += segHTML('맞춤 단계', 'level', [[0, '자동'], [1, '1단계'], [2, '2단계'], [3, '3단계']], P.set ? P.level : '');
     h += '<p class="small" id="lvNote">' + LVNOTE[P.set ? P.level : 0] + '</p>';
@@ -1444,7 +1447,7 @@ body:not(.did) #roomFab,body:not(.did) .hgo{display:none}
         '<div class="syncrow"><button class="btn" data-s="copy">코드 복사</button><button class="btn" data-s="now">지금 저장</button><button class="btn" data-s="off">' + (SY.ask === 'off' ? '정말 끊을까요? 한 번 더' : '이 기기에서 연결 끊기') + '</button></div>';
       if (SY.ask === 'off') h += '<p class="small">끊어도 이 기기의 기록과 서버의 기록은 지워지지 않아요.</p>';
     }
-    h += '<h4 class="synch">부모님께 기록 보내기</h4><p class="small">‘말모이 학부모’ 앱에 붙여 넣으면 아이가 한 활동과 앱이 건넨 피드백을 볼 수 있어요. 이름과 사진은 들어 있지 않아요. 복사한 뒤의 기록은 새로 복사해야 반영돼요.</p><div class="syncrow"><button class="btn" data-s="export">기록 코드 복사</button></div>';
+    h += '<h4 class="synch">부모님께 기록 보내기</h4><p class="small">‘말모이 학부모’ 앱에 붙여 넣으면 아이가 한 활동과 앱이 건넨 피드백을 볼 수 있어요. 이름과 사진은 들어 있지 않아요. 복사한 뒤의 기록은 새로 복사해야 반영돼요.</p><div class="syncrow"><button class="btn" data-s="export">기록 코드 복사</button><a class="btn btnlink" href="parent.html">말모이 학부모 열기</a></div>';
     if (SY.exp) h += '<textarea class="codebox" readonly rows="3" aria-label="기록 코드" onfocus="this.select()">' + esc(SY.exp) + '</textarea>';
     if (SY.msg) h += '<p class="small syncmsg" role="status" aria-live="polite">' + esc(SY.msg) + '</p>';
     el.innerHTML = h;
