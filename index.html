@@ -260,7 +260,7 @@ p{margin:0}
 /* 좁은 화면에서는 칸을 이어 붙인 막대 대신 알약 모양 버튼으로 줄바꿈해 화면 안에 들어오게 한다 */
 @media (max-width:480px){
   .seg{display:grid;grid-template-columns:repeat(auto-fit,minmax(5.2rem,1fr));gap:8px;max-width:100%;border:0;border-radius:0;overflow:visible}
-  .seg button{min-height:52px;padding:2px 6px;font-size:1rem;line-height:1.1;border:3px solid var(--ink);border-radius:999px;white-space:normal;display:flex;align-items:center;justify-content:center;text-align:center}
+  .seg button{min-height:52px;padding:2px 6px;font-size:1rem;line-height:1.1;border:3px solid var(--ink);border-radius:999px;white-space:normal;word-break:keep-all;overflow-wrap:normal;display:flex;align-items:center;justify-content:center;text-align:center}
   .seg button[aria-checked="true"]{box-shadow:2px 2px 0 var(--shade)}
 }
 .modes-d{margin:12px 0 0;font-size:.95rem;color:var(--muted);min-height:1.5em}
